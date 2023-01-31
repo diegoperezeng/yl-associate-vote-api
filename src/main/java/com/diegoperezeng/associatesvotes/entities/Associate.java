@@ -1,10 +1,12 @@
 package com.diegoperezeng.associatesvotes.entities;
 
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
 
-import jakarta.persistence.*;
+
 
 @Entity
 @Table(name = "associate")
