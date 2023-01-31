@@ -30,3 +30,5 @@ The database structure for this project have the following tables:
         - created_at (timestamp)
 
 The MySQL statements would be in the file **associates_vote_tables_create.sql**
+
+To set your database, use env.bkp content to fill a .env new file and change the variables there with your mySQL repository info.
