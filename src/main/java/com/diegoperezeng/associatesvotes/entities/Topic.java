@@ -17,18 +17,18 @@ public class Topic implements Serializable {
 	private Long id;
 	private String title;
 	private String description;
-	private Boolean status;
+	private Boolean openStatus;
 	private Timestamp createdAt;
 	    
 	public Topic() {
 	}
 
-	public Topic(Long id, String title, String description, Boolean status, Timestamp createdAt) {
+	public Topic(Long id, String title, String description, Boolean openStatus, Timestamp createdAt) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
-		this.status = status;
+		this.openStatus = openStatus;
 		this.createdAt = createdAt;
 	}
 
@@ -56,12 +56,12 @@ public class Topic implements Serializable {
 		this.description = description;
 	}
 
-	public Boolean getStatus() {
-		return status;
+	public Boolean getOpenStatus() {
+		return openStatus;
 	}
 
-	public void setStatus(Boolean status) {
-		this.status = status;
+	public void setOpenStatus(Boolean openStatus) {
+		this.openStatus = openStatus;
 	}
 
 	public Timestamp getCreatedAt() {
