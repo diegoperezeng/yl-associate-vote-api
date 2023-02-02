@@ -7,27 +7,28 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 
-
 @Entity
-@Table(name = "associate")
-public class Associate implements Serializable {
+@Table(name = "topic")
+public class Topic implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String name;
-	private String email;
+	private String title;
+	private String description;
+	private Boolean status;
 	private Timestamp createdAt;
-	
-	public Associate() {
+	    
+	public Topic() {
 	}
 
-	public Associate(Long id, String name, String email, Timestamp createdAt) {
+	public Topic(Long id, String title, String description, Boolean status, Timestamp createdAt) {
 		super();
 		this.id = id;
-		this.name = name;
-		this.email = email;
+		this.title = title;
+		this.description = description;
+		this.status = status;
 		this.createdAt = createdAt;
 	}
 
@@ -39,28 +40,40 @@ public class Associate implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
 	}
 
 	public Timestamp getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreated_at(Timestamp createdAt) {
+	public void setCreatedAt(Timestamp createdAt) {
 		this.createdAt = createdAt;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	@Override
@@ -76,7 +89,10 @@ public class Associate implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Associate other = (Associate) obj;
+		Topic other = (Topic) obj;
 		return Objects.equals(createdAt, other.createdAt) && Objects.equals(id, other.id);
-	}	
+	}
+	
+	
+	
 }
