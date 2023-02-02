@@ -26,8 +26,4 @@ public class TestConfig implements CommandLineRunner{
 		associateRepository.saveAll(Arrays.asList(a1, a2));
 		
 	}
-	
-	
-	
-
 }
