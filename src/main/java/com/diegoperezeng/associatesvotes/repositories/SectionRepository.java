@@ -6,4 +6,6 @@ import com.diegoperezeng.associatesvotes.entities.Section;
 
 public interface SectionRepository extends JpaRepository<Section, Long> {
 
+    public Integer findVoteCountYesByTopicId(Long topicId);
+    public Integer findVoteCountYesById(Long id);
 }
