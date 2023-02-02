@@ -1,6 +1,6 @@
-CREATE DATABASE associates_votes_db;
+CREATE DATABASE IF NOT EXISTS associates_votes_db;
 
-CREATE TABLE IF NOT EXISTS topics (
+CREATE TABLE IF NOT EXISTS topic (
   id INT(11) NOT NULL AUTO_INCREMENT,
   title VARCHAR(255) NOT NULL,
   description TEXT NOT NULL,
@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS topics (
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id)
 );
-CREATE TABLE IF NOT EXISTS  associates (
+CREATE TABLE IF NOT EXISTS  associate (
   id INT(11) NOT NULL AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
@@ -16,29 +16,25 @@ CREATE TABLE IF NOT EXISTS  associates (
   PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS  sections (
+CREATE TABLE IF NOT EXISTS  section (
   id INT(11) NOT NULL AUTO_INCREMENT,
   topic_id INT(11) NOT NULL,
   start_time TIMESTAMP NOT NULL,
-  end_time TIMESTAMP NOT NULL,
+  end_time TIMESTAMP,
   is_open TINYINT(1) NOT NULL DEFAULT 0,
+  vote_count_yes INT(11) NOT NULL DEFAULT 0,
+  vote_count_no  INT(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (id),
-  FOREIGN KEY (topic_id) REFERENCES topics(id)
+  FOREIGN KEY (topic_id) REFERENCES topic(id)
 );
 
-CREATE TABLE IF NOT EXISTS  votes (
+CREATE TABLE IF NOT EXISTS  vote (
   id INT(11) NOT NULL AUTO_INCREMENT,
   section_id INT(11) NOT NULL,
   associate_id INT(11) NOT NULL,
-  vote ENUM('yes', 'no') NOT NULL,
+  vote_choice ENUM('yes', 'no') NOT NULL DEFAULT 'no',
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id),
-  FOREIGN KEY (section_id) REFERENCES sections(id),
-  FOREIGN KEY (associate_id) REFERENCES associates(id)
+  FOREIGN KEY (section_id) REFERENCES section(id),
+  FOREIGN KEY (associate_id) REFERENCES associate(id)
 );
-
-
-
-
-
-
