@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.diegoperezeng</groupId>
 	<artifactId>associatesvotes</artifactId>
-	<version>0.1.2-SNAPSHOT</version>
+	<version>0.1.3-SNAPSHOT</version>
 	<name>associatesvotes</name>
 	<description>Api rest for counting associate&apos;s votes in topics</description>
 	<properties>

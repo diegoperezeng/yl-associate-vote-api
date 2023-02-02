@@ -18,18 +18,18 @@ public class TopicService {
 	// more clean
 	ServiceUtils serviceUtils = new ServiceUtils();
 
-	private final TopicRepository TopicRepository;
+	private final TopicRepository topicRepository;
 
 	public TopicService(TopicRepository TopicRepository) {
-		this.TopicRepository = TopicRepository;
+		this.topicRepository = TopicRepository;
 	}
 
 	public List<Topic> getAllTopics() {
-		return serviceUtils.handleRepositoryCall(() -> TopicRepository.findAll());
+		return serviceUtils.handleRepositoryCall(() -> topicRepository.findAll());
 	}
 
 	public Topic findTopicById(Long id) {
-		return serviceUtils.handleRepositoryCall(() -> TopicRepository.findById(id).orElse(null));
+		return serviceUtils.handleRepositoryCall(() -> topicRepository.findById(id).orElse(null));
 	}
 
 	@Transactional
@@ -39,7 +39,7 @@ public class TopicService {
 		topic.setDescription(description);
 		topic.setOpenStatus(openStatus);
 
-		serviceUtils.handleRepositoryCall(() -> TopicRepository.save(topic));
+		serviceUtils.handleRepositoryCall(() -> topicRepository.save(topic));
 
 	}
 }
