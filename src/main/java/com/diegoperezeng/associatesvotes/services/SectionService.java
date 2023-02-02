@@ -37,9 +37,19 @@ public class SectionService {
 	// The method sectionResult() is used to get the result of a section.
 	// Item: Contabilizar os votos e dar o resultado da votação na pauta
 	//
-	public Section sectionResult(Long topicId) {
-		return serviceUtils.handleRepositoryCall(() -> sectionRepository.findById(topicId).orElse(null));
-	}
+	public TopicResult sectionResult(Long topicId) {
+		  Section section = serviceUtils.handleRepositoryCall(() -> sectionRepository.findById(topicId).orElse(null));
+		  if (section == null) {
+		    return null;
+		  }
+		  TopicResult topicResult = new TopicResult();
+		  
+		  topicResult.setTitle("Resultado da Pauta");
+		  topicResult.setTopicId(section.getTopicId());
+		  topicResult.setVoteCountYes(section.getVoteCountYes());
+		  topicResult.setVoteCountNo(section.getVoteCountNo());
+		  return topicResult;
+		}
 	
 
 	
@@ -54,7 +64,7 @@ public class SectionService {
 		section.setTopicId(topicId);
 		section.setStartTime(startTime);
 		section.setEndTime(endTime);
-
+		
 		serviceUtils.handleRepositoryCall(() -> sectionRepository.save(section));
 
 	}
