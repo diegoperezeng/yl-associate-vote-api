@@ -19,20 +19,23 @@ public class VoteService {
 	// more clean
 	ServiceUtils serviceUtils = new ServiceUtils();
 
-	private final VoteRepository VoteRepository;
+	private final VoteRepository voteRepository;
 
 	public VoteService(VoteRepository VoteRepository) {
-		this.VoteRepository = VoteRepository;
+		this.voteRepository = VoteRepository;
 	}
 
 	public List<Vote> getAllVotes() {
-		return serviceUtils.handleRepositoryCall(() -> VoteRepository.findAll());
+		return serviceUtils.handleRepositoryCall(() -> voteRepository.findAll());
 	}
 
 	public Vote findVoteById(Long id) {
-		return serviceUtils.handleRepositoryCall(() -> VoteRepository.findById(id).orElse(null));
-	}
-
+		return serviceUtils.handleRepositoryCall(() -> voteRepository.findById(id).orElse(null));
+	}	
+	
+	// The method saveVote() is used to create a new vote for an associate in a particularly section.
+	// Item: Receber votos dos associados em pautas (os votos são apenas 'Sim'/'Não'. Cada associado é identificado por um id único e pode votar apenas uma vez por pauta)
+	//
 	@Transactional
 	public void saveVote(Long sectionId, Long associateId, VoteOption voteChoice) throws ConstraintViolationException {
 		Vote vote = new Vote();
@@ -40,7 +43,7 @@ public class VoteService {
 		vote.setAssociateId(associateId);
 		vote.setVoteChoice(voteChoice);
 
-		serviceUtils.handleRepositoryCall(() -> VoteRepository.save(vote));
+		serviceUtils.handleRepositoryCall(() -> voteRepository.save(vote));
 
 	}
 }

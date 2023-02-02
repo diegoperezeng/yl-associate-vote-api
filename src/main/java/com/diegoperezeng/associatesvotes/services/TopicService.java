@@ -32,6 +32,8 @@ public class TopicService {
 		return serviceUtils.handleRepositoryCall(() -> topicRepository.findById(id).orElse(null));
 	}
 
+	// The method saveTopic() is used to create a new topic.
+	// Item: Cadastrar uma nova pauta
 	@Transactional
 	public void saveTopic(String title, String description, Boolean openStatus) throws ConstraintViolationException {
 		Topic topic = new Topic();
