@@ -44,20 +44,10 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
-		</dependency>		
-		<!-- Swagger UI -
-		<dependency>
-			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>1.6.4</version>
-		</dependency>	
-		-->	
+		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<!--
-			<version>5.0.9.RELEASE</version>
-			-->
+			<artifactId>spring-webmvc</artifactId>			
 		</dependency>		
 		<dependency>
 		    <groupId>javax</groupId>
@@ -75,8 +65,7 @@
 		    <artifactId>springfox-swagger-ui</artifactId>
 		    <version>3.0.0</version>
 		</dependency>
-		<!-- SWAGGER2 - FIM-->
-		
+		<!-- SWAGGER2 - FIM-->		
 	</dependencies>
 	<build>
 		<plugins>
