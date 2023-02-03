@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.diegoperezeng</groupId>
 	<artifactId>associatesvotes</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.2-SNAPSHOT</version>
 	<name>associatesvotes</name>
 	<description>Api rest for counting associates votes in topics</description>
 	<properties>
@@ -44,20 +44,11 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
-		</dependency>		
-		<!-- Swagger UI -->
-		<dependency>
-			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>1.6.4</version>
-		</dependency>		
+		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<!--
-			<version>5.0.9.RELEASE</version>
-			-->
-		</dependency>
+			<artifactId>spring-webmvc</artifactId>			
+		</dependency>		
 		<dependency>
 		    <groupId>javax</groupId>
 		    <artifactId>javaee-api</artifactId>
@@ -66,16 +57,15 @@
 		<!-- SWAGGER2 - INICIO -->
 		<dependency>
 		    <groupId>io.springfox</groupId>
-		    <artifactId>springfox-swagger2</artifactId>
-		    <version>2.9.2</version>
+		    <artifactId>springfox-boot-starter</artifactId>
+		    <version>3.0.0</version>
 		</dependency>
 		<dependency>
 		    <groupId>io.springfox</groupId>
 		    <artifactId>springfox-swagger-ui</artifactId>
 		    <version>3.0.0</version>
 		</dependency>
-		<!-- SWAGGER2 - FIM-->
-		
+		<!-- SWAGGER2 - FIM-->		
 	</dependencies>
 	<build>
 		<plugins>
