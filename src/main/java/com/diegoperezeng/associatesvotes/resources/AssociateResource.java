@@ -16,7 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.diegoperezeng.associatesvotes.entities.Associate;
 import com.diegoperezeng.associatesvotes.entities.Topic;
 import com.diegoperezeng.associatesvotes.services.AssociateService;
-import io.swagger.annotations.*;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 @RestController
 @RequestMapping("/api/v1/associates")
 @Api(value = "Associate Resource", description = "Operations related to Associates")
