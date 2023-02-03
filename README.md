@@ -13,7 +13,7 @@ http://localhost:8080/swagger-ui/index.html (if you run your application locally
 
 ## The Data Base:
 
-![MySQL Database Structure, with four tables: named topic, associate, section and vote. Table section linked with table topic and table vote. Table vote linked with table topic and table associate](/src/main/resources/db/associates_model_db.png "MySQL Database Structure")
+![MySQL Database Structure, with four tables: named topic, associate, section and vote. Table section linked with table topic and table vote. Table vote linked with table topic and table associate](/documentation/Tables_diagram.png "MySQL Database Structure")
 
 The database structure for this project have the following tables:
 
