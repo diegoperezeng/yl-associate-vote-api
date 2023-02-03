@@ -44,7 +44,7 @@ public class VoteResource {
 		return voteService.findVoteById(id);
 	}
 
-	@ApiOperation(value = "Create a new vote for an associate in a particular section")
+	@ApiOperation(value = "Create a new vote for an associate in a particular section / Item3: Receber votos dos associados em pautas")
 	@ApiResponses(value = {
 			@ApiResponse(code = 201, message = "Successful"),
 			@ApiResponse(code = 400, message = "Bad request")

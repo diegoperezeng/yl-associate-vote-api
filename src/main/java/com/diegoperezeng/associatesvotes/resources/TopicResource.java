@@ -45,7 +45,7 @@ public class TopicResource {
 
 	// Item: Cadastrar uma nova pauta
 	@PostMapping("/save")
-	@ApiOperation(value = "Add a new topic")
+	@ApiOperation(value = "Add a new topic / Item1: Cadastrar uma nova pauta")
 	@ApiResponses(value = {
 			@ApiResponse(code = 201, message = "Successfully created topic"),
 			@ApiResponse(code = 400, message = "Bad request")

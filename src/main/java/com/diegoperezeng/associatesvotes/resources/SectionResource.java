@@ -57,7 +57,7 @@ public class SectionResource {
 		}
 	}
 
-	@ApiOperation(value = "Count votes and give the voting result on the topic")
+	@ApiOperation(value = "Count votes and give the voting result on the topic / Item4: Contar os votos e dar o resultado da votação na pauta")
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Successfully retrieved result"),
 			@ApiResponse(code = 404, message = "Result not found")
@@ -71,7 +71,7 @@ public class SectionResource {
 		}
 	}
 
-	@ApiOperation(value = "Open a voting session on a topic")
+	@ApiOperation(value = "Open a voting session on a topic / Item2: Abrir uma sessão de votação em uma pauta")
 	@ApiResponses(value = {
 			@ApiResponse(code = 201, message = "Successfully created a new session"),
 			@ApiResponse(code = 400, message = "Bad request")
