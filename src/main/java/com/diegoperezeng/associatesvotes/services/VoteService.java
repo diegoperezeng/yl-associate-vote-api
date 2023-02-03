@@ -2,13 +2,11 @@ package com.diegoperezeng.associatesvotes.services;
 
 import java.util.List;
 
-import javax.validation.ConstraintViolationException;
-
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.diegoperezeng.associatesvotes.entities.Vote;
-import com.diegoperezeng.associatesvotes.entities.Vote.VoteOption;
 import com.diegoperezeng.associatesvotes.repositories.VoteRepository;
 import com.diegoperezeng.associatesvotes.utils.ServiceUtils;
 
@@ -37,7 +35,7 @@ public class VoteService {
 	// Item: Receber votos dos associados em pautas (os votos são apenas 'Sim'/'Não'. Cada associado é identificado por um id único e pode votar apenas uma vez por pauta)
 	//
 	@Transactional
-	public void saveVote(Long sectionId, Long associateId, VoteOption voteChoice) throws ConstraintViolationException {
+	public void saveVote(Long sectionId, Long associateId, Boolean voteChoice) throws ConstraintViolationException {
 		Vote vote = new Vote();
 		vote.setSectionId(sectionId);
 		vote.setAssociateId(associateId);

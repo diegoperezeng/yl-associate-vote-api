@@ -1,10 +1,12 @@
 package com.diegoperezeng.associatesvotes.entities;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 @Entity
@@ -16,11 +18,15 @@ public class Section implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Long topicId;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	private Timestamp startTime;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	private Timestamp endTime;
 	private Boolean isOpen;
 	private Integer voteCountYes;
 	private Integer voteCountNo;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	private Timestamp createdAt;
 	
     

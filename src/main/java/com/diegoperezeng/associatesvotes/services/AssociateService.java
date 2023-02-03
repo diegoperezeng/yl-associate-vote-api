@@ -2,8 +2,7 @@ package com.diegoperezeng.associatesvotes.services;
 
 import java.util.List;
 
-import javax.validation.ConstraintViolationException;
-
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

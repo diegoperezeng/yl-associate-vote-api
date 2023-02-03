@@ -1,10 +1,12 @@
 package com.diegoperezeng.associatesvotes.entities;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 @Entity
@@ -17,18 +19,15 @@ public class Vote implements Serializable {
 	private Long id;
 	private Long sectionId;
 	private Long associateId;
-	private VoteOption voteChoice;
+	private Boolean voteChoice;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	private Timestamp createdAt;
 	
-	// Vote options
-    public enum VoteOption {
-        yes, no
-    }
-    
+	    
 	public Vote() {
 	}
 	
-	public Vote(Long id, Long sectionId, Long associateId, VoteOption voteChoice, Timestamp createdAt) {
+	public Vote(Long id, Long sectionId, Long associateId, Boolean voteChoice, Timestamp createdAt) {
 		super();
 		this.id = id;
 		this.sectionId = sectionId;
@@ -61,11 +60,11 @@ public class Vote implements Serializable {
 		this.associateId = associateId;
 	}
 
-	public VoteOption getVoteChoice() {
+	public Boolean getVoteChoice() {
 		return voteChoice;
 	}
 
-	public void setVoteChoice(VoteOption voteChoice) {
+	public void setVoteChoice(Boolean voteChoice) {
 		this.voteChoice = voteChoice;
 	}
 

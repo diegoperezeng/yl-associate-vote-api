@@ -2,12 +2,10 @@ package com.diegoperezeng.associatesvotes;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-//import org.springframework.context.annotation.Import;
-
-//import com.diegoperezeng.associatesvotes.config.DatabaseConfig;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @SpringBootApplication
-//@Import(DatabaseConfig.class)
+@EnableWebMvc
 public class AssociatesvotesApplication {
 
 	public static void main(String[] args) {

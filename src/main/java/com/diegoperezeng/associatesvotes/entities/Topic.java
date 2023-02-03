@@ -1,10 +1,12 @@
 package com.diegoperezeng.associatesvotes.entities;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 @Entity
@@ -18,6 +20,7 @@ public class Topic implements Serializable {
 	private String title;
 	private String description;
 	private Boolean openStatus;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	private Timestamp createdAt;
 	    
 	public Topic() {
