@@ -17,7 +17,7 @@ import com.diegoperezeng.associatesvotes.entities.Vote;
 import com.diegoperezeng.associatesvotes.services.VoteService;
 
 @RestController
-@RequestMapping("/votes")
+@RequestMapping("/api/v1/votes")
 public class VoteResource {
 
 	@Autowired
@@ -36,7 +36,7 @@ public class VoteResource {
 	}
 
 	// Creates a new vote for an associate in a particular section
-	@PostMapping
+	@PostMapping("/save")
 	public ResponseEntity<Topic> saveVote(@RequestBody Vote vote) {
 		try {
 			voteService.saveVote(vote.getSectionId(), vote.getAssociateId(), vote.getVoteChoice());

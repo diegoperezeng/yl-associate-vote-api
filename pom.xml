@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.diegoperezeng</groupId>
 	<artifactId>associatesvotes</artifactId>
-	<version>0.2.0-SNAPSHOT</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<name>associatesvotes</name>
 	<description>Api rest for counting associates votes in topics</description>
 	<properties>
@@ -63,7 +63,7 @@
 		    <artifactId>javaee-api</artifactId>
 		    <version>8.0.1</version>
 		</dependency>
-		<!-- SWAGGER2 - INICIO
+		<!-- SWAGGER2 - INICIO -->
 		<dependency>
 		    <groupId>io.springfox</groupId>
 		    <artifactId>springfox-swagger2</artifactId>
@@ -72,9 +72,9 @@
 		<dependency>
 		    <groupId>io.springfox</groupId>
 		    <artifactId>springfox-swagger-ui</artifactId>
-		    <version>2.9.2</version>
+		    <version>3.0.0</version>
 		</dependency>
-		 SWAGGER2 - FIM-->
+		<!-- SWAGGER2 - FIM-->
 		
 	</dependencies>
 	<build>
