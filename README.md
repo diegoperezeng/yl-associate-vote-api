@@ -55,3 +55,4 @@ The MySQL statements for create tables would be in the file:
 The MySQL triggers for create triggers would be in the follow file:
 **associates_vote_statements_triggers.sql**
 
+Both files are located in **/src/main/resources/bd**
