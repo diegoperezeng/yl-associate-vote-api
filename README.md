@@ -5,6 +5,8 @@ An aplication to control of the Associates vote calculation on business agenda. 
 ## INSTALLATION
 
 Run ```java mvn clean install ```
+then
+Run ```java mvn clean package ```
 
 ## SWAGGER
 
