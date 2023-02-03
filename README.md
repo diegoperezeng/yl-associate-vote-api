@@ -2,6 +2,17 @@
 An aplication to control of the Associates vote calculation on business agenda. (Uma aplicação para controlar o cálculo dos votos sobre pautas de negócios dos associados).
 
 
+
+## TECHNOLOGY
+- Java v17
+- Springboot and SpringData v2
+- Swagger v3
+- MySQL v8
+
+![Java logo with number seventeen, Spring environment logo above the springboot and sprindata on sides with a plus sign](/documentation/techs-on-associates-votes.png "Techs on project")
+
+
+
 ## INSTALLATION
 
 Run ``` mvn clean install ```
