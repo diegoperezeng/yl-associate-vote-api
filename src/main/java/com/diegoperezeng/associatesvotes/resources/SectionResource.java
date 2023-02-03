@@ -19,7 +19,7 @@ import com.diegoperezeng.associatesvotes.services.SectionService;
 import com.diegoperezeng.associatesvotes.services.TopicResult;
 
 @RestController
-@RequestMapping("/sections")
+@RequestMapping("/api/v1/sections")
 public class SectionResource{
 
 	@Autowired
@@ -52,7 +52,7 @@ public class SectionResource{
 	}
 
 	// Item: Contabilizar os votos e dar o resultado da votação na pauta.
-	@GetMapping("/{topicId}/result")
+	@GetMapping("/result/{topicId}")
 	public TopicResult sectionResult(@PathVariable Long topicId) {
 		try {
 			return sectionService.sectionResult(topicId);
@@ -62,7 +62,7 @@ public class SectionResource{
 	}
 
 	// Item: Abrir uma sessão de votação em uma pauta
-	@PostMapping("/{topicId}/start")
+	@PostMapping("/start/{topicId}")
 	public ResponseEntity<Section> saveSection(@PathVariable Long topicId, @RequestBody Timestamp startTime, @RequestBody Timestamp endTime, Boolean isOpen){
 		try {
 			Section savedSession = sectionService.saveSection(topicId, startTime, endTime, true);

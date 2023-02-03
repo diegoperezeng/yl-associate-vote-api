@@ -15,7 +15,7 @@ import com.diegoperezeng.associatesvotes.entities.Topic;
 import com.diegoperezeng.associatesvotes.services.TopicService;
 
 @RestController
-@RequestMapping("/topics")
+@RequestMapping("/api/v1/topics")
 public class TopicResource {
 
 	@Autowired
@@ -32,7 +32,7 @@ public class TopicResource {
 	}
 
 	// Item: Cadastrar uma nova pauta
-	@PostMapping
+	@PostMapping("/save")
 	public ResponseEntity<Topic> saveTopic(@RequestBody Topic topic) {
 		try {
 			topicService.saveTopic(topic.getTitle(), topic.getDescription(), topic.getOpenStatus());
