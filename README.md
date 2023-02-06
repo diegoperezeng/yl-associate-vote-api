@@ -24,7 +24,7 @@ http://localhost:8080/swagger-ui/index.html (if you run your application locally
 
 ## The Data Base:
 
-![MySQL Database Structure, with four tables: named topic, associate, section and vote. Table section linked with table topic and table vote. Table vote linked with table topic and table associate](/documentation/Tables_diagram.png "MySQL Database Structure")
+![MySQL Database Structure, with four tables: named topic, associate, session and vote. Table session linked with table topic and table vote. Table vote linked with table topic and table associate](/documentation/Tables_diagram.png "MySQL Database Structure")
 
 The database structure for this project have the following tables:
 
@@ -39,7 +39,7 @@ The database structure for this project have the following tables:
         - name (string)
         - email (string)
         - created_at (timestamp)
-    3. section: This table would have the following columns:
+    3. session: This table would have the following columns:
         - id (primary key)
         - topic_id (foreign key referencing Topics table)
         - start_time (timestamp)
@@ -49,7 +49,7 @@ The database structure for this project have the following tables:
         - vote_count_no  INT(11)
     4. vote: This table would have the following columns:
         - id (primary key)
-        - section_id (foreign key referencing section table)
+        - session_id (foreign key referencing session table)
         - associate_id (BIGINT - foreign key referencing associate table)
         - vote_choice (boolean - tinyint)
         - created_at (timestamp)

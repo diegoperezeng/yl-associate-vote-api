@@ -13,45 +13,44 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.diegoperezeng.associatesvotes.entities.Section;
-import com.diegoperezeng.associatesvotes.services.SectionService;
+import com.diegoperezeng.associatesvotes.entities.Session;
+import com.diegoperezeng.associatesvotes.resources.exceptions.ErrorResponse;
+import com.diegoperezeng.associatesvotes.services.SessionService;
 import com.diegoperezeng.associatesvotes.services.TopicResult;
 
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 @RestController
-@RequestMapping("/api/v1/sections")
-public class SectionResource {
+@RequestMapping("/api/v1/sessions")
+public class SessionResource {
 
 	@Autowired
-	private SectionService sectionService;
+	private SessionService sessionService;
 
-	public SectionResource(SectionService sectionService) {
-		this.sectionService = sectionService;
+	public SessionResource(SessionService sessionService) {
+		this.sessionService = sessionService;
 	}
 
-	@ApiOperation(value = "Get all sections")
+	@ApiOperation(value = "Get all sessions")
 	@GetMapping
-	public List<Section> getAllSections() {
+	public List<Session> getAllSessions() {
 		try {
-			return sectionService.getAllSections();
+			return sessionService.getAllSessions();
 		} catch (Exception ex) {
 			return null;
 		}
 	}
 
-	@ApiOperation(value = "Get a section by id")
+	@ApiOperation(value = "Get a session by id")
 	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "Successfully retrieved section"),
-			@ApiResponse(code = 404, message = "Section not found")	})
+			@ApiResponse(code = 200, message = "Successfully retrieved session"),
+			@ApiResponse(code = 404, message = "Session not found")	})
 	@GetMapping("/{id}")
-	public Section findTopicById(@PathVariable Long id) {
+	public Session findTopicById(@PathVariable Long id) {
 		try {
-			return sectionService.findSectionById(id);
+			return sessionService.findSessionById(id);
 		} catch (Exception ex) {
 			return null;
 		}
@@ -59,30 +58,32 @@ public class SectionResource {
 
 	@ApiOperation(value = "Count votes and give the voting result on the topic / Item4: Contar os votos e dar o resultado da votação na pauta")
 	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "Successfully retrieved result"),
+			@ApiResponse(code = 200, message = "Successfully Retrieved Result"),
 			@ApiResponse(code = 404, message = "Result not found")
 	})
 	@GetMapping("/result/{topicId}")
-	public TopicResult sectionResult(@PathVariable Long topicId) {
+	public TopicResult sessionResult(@PathVariable Long topicId) {
 		try {
-			return sectionService.sectionResult(topicId);
-		} catch (Exception ex) {
+			return sessionService.sessionResult(topicId);
+		} catch (Exception e) {
 			return null;
 		}
 	}
+	
 
 	@ApiOperation(value = "Open a voting session on a topic / Item2: Abrir uma sessão de votação em uma pauta")
 	@ApiResponses(value = {
 			@ApiResponse(code = 201, message = "Successfully created a new session"),
-			@ApiResponse(code = 400, message = "Bad request")
+			@ApiResponse(code = 406, message = "Not Acceptable")
 	})
 	@PostMapping("/start/{topicId}")
-	public ResponseEntity<Section> saveSection(@PathVariable Long topicId, @RequestBody Timestamp startTime, @RequestBody Timestamp endTime, Boolean isOpen){
-		try {
-			Section savedSession = sectionService.saveSection(topicId, startTime, endTime, true);
-			return new ResponseEntity<>(savedSession, HttpStatus.CREATED);
-		} catch (Exception ex) {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+	public ResponseEntity<?> saveSession(@PathVariable Long topicId, @RequestBody Timestamp startTime, @RequestBody Timestamp endTime, Boolean isOpen){
+	    try {
+	        Session savedSession = sessionService.saveSession(topicId, startTime, endTime, true);
+	        return new ResponseEntity<>(savedSession, HttpStatus.CREATED);
+	    } catch (Exception e) {
+			return ErrorResponse.getResponse(e);					
 		}
+	    
 	}
 }

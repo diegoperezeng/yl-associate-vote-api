@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.diegoperezeng</groupId>
 	<artifactId>associatesvotes</artifactId>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.3-SNAPSHOT</version>
 	<name>associatesvotes</name>
 	<description>Api rest for counting associates votes in topics</description>
 	<properties>
@@ -47,7 +47,10 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>			
+			<artifactId>spring-webmvc</artifactId>
+			<!--
+			<version>5.0.9.RELEASE</version>
+			-->
 		</dependency>		
 		<dependency>
 		    <groupId>javax</groupId>
@@ -65,7 +68,8 @@
 		    <artifactId>springfox-swagger-ui</artifactId>
 		    <version>3.0.0</version>
 		</dependency>
-		<!-- SWAGGER2 - FIM-->		
+		<!-- SWAGGER2 - FIM-->
+		
 	</dependencies>
 	<build>
 		<plugins>

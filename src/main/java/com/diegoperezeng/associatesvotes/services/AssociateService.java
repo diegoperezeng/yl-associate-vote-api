@@ -1,5 +1,6 @@
 package com.diegoperezeng.associatesvotes.services;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.hibernate.exception.ConstraintViolationException;
@@ -36,6 +37,7 @@ public class AssociateService {
 		Associate associate = new Associate();
 		associate.setName(name);
 		associate.setEmail(email);
+		associate.setCreatedAt(new Timestamp(System.currentTimeMillis()));
 
 		serviceUtils.handleRepositoryCall(() -> associateRepository.save(associate));
 

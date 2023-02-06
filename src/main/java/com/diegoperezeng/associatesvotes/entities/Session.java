@@ -10,8 +10,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 @Entity
-@Table(name = "section")
-public class Section implements Serializable {
+@Table(name = "session")
+public class Session implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -30,11 +30,11 @@ public class Section implements Serializable {
 	private Timestamp createdAt;
 	
     
-	public Section() {
+	public Session() {
 	}
 
 
-	public Section(Long id, Long topicId, Timestamp startTime, Timestamp endTime, Boolean isOpen, Integer voteCountYes,
+	public Session(Long id, Long topicId, Timestamp startTime, Timestamp endTime, Boolean isOpen, Integer voteCountYes,
 			Integer voteCountNo, Timestamp createdAt) {
 		super();
 		this.id = id;
@@ -147,7 +147,7 @@ public class Section implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Section other = (Section) obj;
+		Session other = (Session) obj;
 		return Objects.equals(createdAt, other.createdAt) && Objects.equals(id, other.id)
 				&& Objects.equals(voteCountYes, other.voteCountYes);
 	}

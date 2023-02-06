@@ -12,11 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.diegoperezeng.associatesvotes.entities.Topic;
 import com.diegoperezeng.associatesvotes.entities.Vote;
+import com.diegoperezeng.associatesvotes.resources.exceptions.ErrorResponse;
 import com.diegoperezeng.associatesvotes.services.VoteService;
 
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
@@ -44,18 +43,18 @@ public class VoteResource {
 		return voteService.findVoteById(id);
 	}
 
-	@ApiOperation(value = "Create a new vote for an associate in a particular section / Item3: Receber votos dos associados em pautas")
+	@ApiOperation(value = "Create a new vote for an associate in a particular session / Item3: Receber votos dos associados em pautas")
 	@ApiResponses(value = {
-			@ApiResponse(code = 201, message = "Successful"),
-			@ApiResponse(code = 400, message = "Bad request")
+			@ApiResponse(code = 201, message = "Vote Registered Successfully"),
+			@ApiResponse(code = 406, message = "Not Acceptable")
 	})
 	@PostMapping("/save")
-	public ResponseEntity<Topic> saveVote(@ApiParam(value = "Vote details", required = true) @RequestBody Vote vote) {
+	public ResponseEntity<?> saveVote(@ApiParam(value = "Vote details", required = true) @RequestBody Vote vote) {
 		try {
-			voteService.saveVote(vote.getSectionId(), vote.getAssociateId(), vote.getVoteChoice());
-			return new ResponseEntity<>(HttpStatus.CREATED);
+			voteService.saveVote(vote.getSessionId(), vote.getAssociateId(), vote.getVoteChoice());
+			return new ResponseEntity<>("Vote Registered Successfully", HttpStatus.CREATED);
 		} catch (Exception e) {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			return ErrorResponse.getResponse(e);					
 		}
 	}
 }

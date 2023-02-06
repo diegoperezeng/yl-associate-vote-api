@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS  associate (
   PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS  section (
+CREATE TABLE IF NOT EXISTS  session (
   id INT(11) NOT NULL AUTO_INCREMENT,
   topic_id INT(11) NOT NULL,
   start_time TIMESTAMP NOT NULL,
@@ -30,16 +30,16 @@ CREATE TABLE IF NOT EXISTS  section (
 
 CREATE TABLE IF NOT EXISTS  vote (
   id INT(11) NOT NULL AUTO_INCREMENT,
-  section_id INT(11) NOT NULL,
+  session_id INT(11) NOT NULL,
   associate_id INT(11) NOT NULL,
   vote ENUM('yes', 'no') NOT NULL DEFAULT 'no',
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id),
-  FOREIGN KEY (section_id) REFERENCES section(id),
+  FOREIGN KEY (session_id) REFERENCES session(id),
   FOREIGN KEY (associate_id) REFERENCES associate(id)
 );
 
-ALTER TABLE sections RENAME TO section;
+ALTER TABLE sessions RENAME TO session;
 
 SELECT * FROM associate;
 

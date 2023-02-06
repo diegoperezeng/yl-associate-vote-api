@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.diegoperezeng.associatesvotes.entities.Topic;
+import com.diegoperezeng.associatesvotes.resources.exceptions.ErrorResponse;
 import com.diegoperezeng.associatesvotes.services.TopicService;
 
 import io.swagger.annotations.Api;
@@ -48,14 +49,14 @@ public class TopicResource {
 	@ApiOperation(value = "Add a new topic / Item1: Cadastrar uma nova pauta")
 	@ApiResponses(value = {
 			@ApiResponse(code = 201, message = "Successfully created topic"),
-			@ApiResponse(code = 400, message = "Bad request")
+			@ApiResponse(code = 406, message = "Not Acceptable")
 	})
-	public ResponseEntity<Topic> saveTopic(@RequestBody Topic topic) {
+	public ResponseEntity<?> saveTopic(@RequestBody Topic topic) {
 		try {
 			topicService.saveTopic(topic.getTitle(), topic.getDescription(), topic.getOpenStatus());
 			return new ResponseEntity<>(HttpStatus.CREATED);
 		} catch (Exception e) {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			return ErrorResponse.getResponse(e);
 		}
 	}
 

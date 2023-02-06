@@ -1,22 +1,14 @@
 package com.diegoperezeng.associatesvotes.resources.exceptions;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
 public class ErrorResponse {
-	  private int errorCode;
-	  private String errorMessage;
-	  
-	  public int getErrorCode() {
-	    return errorCode;
-	  }
-	  
-	  public void setErrorCode(int errorCode) {
-	    this.errorCode = errorCode;
-	  }
-	  
-	  public String getErrorMessage() {
-	    return errorMessage;
-	  }
-	  
-	  public void setErrorMessage(String errorMessage) {
-	    this.errorMessage = errorMessage;
-	  }
+	public static ResponseEntity<?> getResponse(Exception e){
+		if(e.getCause().getMessage() == "could not execute statement") {
+			return new ResponseEntity<>(e.getCause().getCause().getMessage(), HttpStatus.NOT_ACCEPTABLE);
+		}else {
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
 	}
+}
