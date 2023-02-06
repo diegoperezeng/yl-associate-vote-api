@@ -64,7 +64,7 @@ public class Associate implements Serializable {
 		return createdAt;
 	}
 
-	public void setCreated_at(Timestamp createdAt) {
+	public void setCreatedAt(Timestamp createdAt) {
 		this.createdAt = createdAt;
 	}
 

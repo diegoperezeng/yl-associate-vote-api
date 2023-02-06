@@ -17,7 +17,7 @@ public class Vote implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Long sectionId;
+	private Long sessionId;
 	private Long associateId;
 	private Boolean voteChoice;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
@@ -27,10 +27,10 @@ public class Vote implements Serializable {
 	public Vote() {
 	}
 	
-	public Vote(Long id, Long sectionId, Long associateId, Boolean voteChoice, Timestamp createdAt) {
+	public Vote(Long id, Long sessionId, Long associateId, Boolean voteChoice, Timestamp createdAt) {
 		super();
 		this.id = id;
-		this.sectionId = sectionId;
+		this.sessionId = sessionId;
 		this.associateId = associateId;
 		this.voteChoice = voteChoice;
 		this.createdAt = createdAt;
@@ -44,12 +44,12 @@ public class Vote implements Serializable {
 		this.id = id;
 	}
 
-	public Long getSectionId() {
-		return sectionId;
+	public Long getSessionId() {
+		return sessionId;
 	}
 
-	public void setSectionId(Long sectionId) {
-		this.sectionId = sectionId;
+	public void setSessionId(Long sessionId) {
+		this.sessionId = sessionId;
 	}
 
 	public Long getAssociateId() {

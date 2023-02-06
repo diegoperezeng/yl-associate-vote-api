@@ -10,13 +10,13 @@ VALUES
 
 INSERT INTO topic (title, description, status) VALUES ('First Topic', 'This is the description of the first topic', 1);
 
-INSERT INTO section (topic_id, start_time) VALUES (1, NOW());
+INSERT INTO session (topic_id, start_time) VALUES (1, NOW());
 
-INSERT INTO vote (section_id, associate_id, vote_choice) VALUES (1, 1, 'yes');
+INSERT INTO vote (session_id, associate_id, vote_choice) VALUES (1, 1, 'yes');
 
 
-DROP TRIGGER section_end_time_update_oninsert;
-DROP TRIGGER section_end_time_update_onupdate;
+DROP TRIGGER session_end_time_update_oninsert;
+DROP TRIGGER session_end_time_update_onupdate;
 DROP TRIGGER check_end_time_duration_oninsert;
 DROP TRIGGER check_end_time_duration_onupdate;
 
