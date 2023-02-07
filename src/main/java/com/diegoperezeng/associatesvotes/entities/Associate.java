@@ -19,6 +19,7 @@ public class Associate implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private String cpf;
 	private String name;
 	private String email;
 	
@@ -28,9 +29,10 @@ public class Associate implements Serializable {
 	public Associate() {
 	}
 
-	public Associate(Long id, String name, String email, Timestamp createdAt) {
+	public Associate(Long id, String cpf, String name, String email, Timestamp createdAt) {
 		super();
 		this.id = id;
+		this.cpf = cpf;
 		this.name = name;
 		this.email = email;
 		this.createdAt = createdAt;
@@ -50,6 +52,14 @@ public class Associate implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	public String getEmail() {
