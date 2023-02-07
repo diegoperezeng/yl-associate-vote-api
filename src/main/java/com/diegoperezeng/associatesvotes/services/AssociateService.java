@@ -33,9 +33,10 @@ public class AssociateService {
 	}
 
 	@Transactional
-	public void saveAssociate(String name, String email) throws ConstraintViolationException {
+	public void saveAssociate(String name, String cpf, String email) throws ConstraintViolationException {
 		Associate associate = new Associate();
 		associate.setName(name);
+		associate.setCpf(cpf);
 		associate.setEmail(email);
 		associate.setCreatedAt(new Timestamp(System.currentTimeMillis()));
 

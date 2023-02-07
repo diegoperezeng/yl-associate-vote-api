@@ -20,8 +20,8 @@ public class TestConfig implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Associate a1 = new Associate(null, "ObiWan Kenobi", "obiwan@resistence.com", null);
-		Associate a2 = new Associate(null, "QuiGon Jin", "quigon@resistence.com", null);
+		Associate a1 = new Associate(null, "54295175700", "ObiWan Kenobi", "obiwan@resistence.com", null);
+		Associate a2 = new Associate(null, "75688850805", "Anakin Skywalker", "darth.vader@sith.com", null);
 		
 		associateRepository.saveAll(Arrays.asList(a1, a2));
 		
