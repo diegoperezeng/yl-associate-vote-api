@@ -1,5 +1,7 @@
 package com.diegoperezeng.associatesvotes.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.info.BuildProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +16,11 @@ import springfox.documentation.spring.web.plugins.Docket;
 
 @Configuration
 public class SpringFoxConfig {
-	@Bean
+
+    @Autowired
+    private BuildProperties buildProperties;
+
+    @Bean
     public Docket swagger() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
@@ -24,12 +30,12 @@ public class SpringFoxConfig {
                 .build()
                 .apiInfo(apiInfo());
     }
- 
+    
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("AsVot API - v1")
                 .description("Associates Votes count on topics service")
-                .version("1.0.1")
+                .version(buildProperties.getVersion())
                 .build();
     }
 
