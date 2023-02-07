@@ -23,6 +23,7 @@ Run ``` mvn clean package ```
 
 http://localhost:8080/swagger-ui/index.html (if you run your application locally)
 
+Click [here](documentation/AsVotAPI%20v1%20-%20EndPoints%20Documentation.pdf) to open the the list of endpoints documentation.
 
 ## The Data Base:
 
