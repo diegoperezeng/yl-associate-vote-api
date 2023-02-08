@@ -39,7 +39,7 @@ Click [here](documentation/AsVotAPI_v.1.1.0-EndPoints_Documentation.pdf) to open
 
 ## The Data Base:
 
-![MySQL Database Structure, with four tables: named topic, associate, session and vote. Table session linked with table topic and table vote. Table vote linked with table topic and table associate](/documentation/Tables_diagram.png "MySQL Database Structure")
+![MySQL Database Structure, with four tables: named topic, associate, session and vote. Table session linked with table topic and table vote. Table vote linked with table topic and table associate](/documentation/Tables_diagram-v2.png "MySQL Database Structure")
 
 The database structure for this project have the following tables:
 
