@@ -14,11 +14,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.diegoperezeng.associatesvotes.entities.Associate;
-import com.diegoperezeng.associatesvotes.entities.Topic;
+import com.diegoperezeng.associatesvotes.resources.exceptions.ErrorResponse;
 import com.diegoperezeng.associatesvotes.services.AssociateService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 @RestController
-@RequestMapping("/api/associates")
+@RequestMapping("/api/v1/associates")
+@Api(value = "Associate Management System", description = "Operations related to Associates", tags = {"1 - Associate Management System"})
 public class AssociateResource {
 
 	@Autowired
@@ -29,24 +36,33 @@ public class AssociateResource {
 	}
 
 	@GetMapping
+	@ApiOperation(value = "Get all associates", notes = "Retrieve a list of all associates", response = Associate.class, responseContainer = "List")
 	public List<Associate> getAllAssociates() {
 		return associateService.getAllAssociates();
 	}
 
 	@GetMapping("/{id}")
+	@ApiOperation(value = "Get associate by id", notes = "Retrieve a associate by providing its id", response = Associate.class)
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Successfully retrieved associate"),
+			@ApiResponse(code = 404, message = "The associate with given id is not found")
+	})
 	public Associate getAssociateById(@PathVariable Long id) {
 		return associateService.findAssociateById(id);
 	}
 
-	@PostMapping
-	public ResponseEntity<Topic> saveAssociate(@RequestBody Associate associate) throws ConstraintViolationException {
+	@PostMapping("/save")
+	@ApiOperation(value = "Save associate", notes = "Save an associate by providing its name and email")
+	@ApiResponses(value = {
+			@ApiResponse(code = 201, message = "Successfully created associate"),
+			@ApiResponse(code = 406, message = "Not Acceptable")
+	})
+	public ResponseEntity<?> saveAssociate(@RequestBody @ApiParam(value = "Associate data", required = true) Associate associate) throws ConstraintViolationException {
 		try {
-			associateService.saveAssociate(associate.getName(), associate.getEmail());
-			return new ResponseEntity<>(HttpStatus.CREATED);
+			associateService.saveAssociate(associate.getName(), associate.getCpf(), associate.getEmail());
+			return new ResponseEntity<>("Associate Created Succesfully",HttpStatus.CREATED);
 		} catch (Exception e) {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			return ErrorResponse.getResponse(e);
 		}
-		
 	}
-
 }

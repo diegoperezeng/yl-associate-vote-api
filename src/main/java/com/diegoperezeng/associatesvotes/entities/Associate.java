@@ -2,10 +2,14 @@ package com.diegoperezeng.associatesvotes.entities;
 
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -19,21 +23,23 @@ public class Associate implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private String cpf;
 	private String name;
 	private String email;
 	
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
-	private Timestamp createdAt;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime createdAt;
 	
 	public Associate() {
 	}
 
-	public Associate(Long id, String name, String email, Timestamp createdAt) {
+	public Associate(Long id, String cpf, String name, String email, LocalDateTime createdAt) {
 		super();
 		this.id = id;
+		this.cpf = cpf;
 		this.name = name;
 		this.email = email;
-		this.createdAt = createdAt;
+		this.createdAt = LocalDateTime.now();
 	}
 
 	public Long getId() {
@@ -52,6 +58,14 @@ public class Associate implements Serializable {
 		this.name = name;
 	}
 
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -60,11 +74,11 @@ public class Associate implements Serializable {
 		this.email = email;
 	}
 
-	public Timestamp getCreatedAt() {
+	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreated_at(Timestamp createdAt) {
+	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
 

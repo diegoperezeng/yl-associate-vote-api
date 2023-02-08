@@ -1,17 +1,21 @@
 package com.diegoperezeng.associatesvotes.entities;
 
-import javax.persistence.*;
-
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Objects;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 @Entity
-@Table(name = "section")
-public class Section implements Serializable {
+@Table(name = "session")
+public class Session implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -19,23 +23,23 @@ public class Section implements Serializable {
 	private Long id;
 	private Long topicId;
 	
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
-	private Timestamp startTime;
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
-	private Timestamp endTime;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime startTime;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime endTime;
 	private Boolean isOpen;
 	private Integer voteCountYes;
 	private Integer voteCountNo;
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
-	private Timestamp createdAt;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime createdAt;
 	
     
-	public Section() {
+	public Session() {
 	}
 
 
-	public Section(Long id, Long topicId, Timestamp startTime, Timestamp endTime, Boolean isOpen, Integer voteCountYes,
-			Integer voteCountNo, Timestamp createdAt) {
+	public Session(Long id, Long topicId, LocalDateTime startTime, LocalDateTime endTime, Boolean isOpen, Integer voteCountYes,
+			Integer voteCountNo) {
 		super();
 		this.id = id;
 		this.topicId = topicId;
@@ -44,7 +48,7 @@ public class Section implements Serializable {
 		this.isOpen = isOpen;
 		this.voteCountYes = voteCountYes;
 		this.voteCountNo = voteCountNo;
-		this.createdAt = createdAt;
+		this.createdAt = LocalDateTime.now();
 	}
 
 
@@ -68,22 +72,22 @@ public class Section implements Serializable {
 	}
 
 
-	public Timestamp getStartTime() {
+	public LocalDateTime getStartTime() {
 		return startTime;
 	}
 
 
-	public void setStartTime(Timestamp startTime) {
+	public void setStartTime(LocalDateTime startTime) {
 		this.startTime = startTime;
 	}
 
 
-	public Timestamp getEndTime() {
+	public LocalDateTime getEndTime() {
 		return endTime;
 	}
 
 
-	public void setEndTime(Timestamp endTime) {
+	public void setEndTime(LocalDateTime endTime) {
 		this.endTime = endTime;
 	}
 
@@ -118,12 +122,12 @@ public class Section implements Serializable {
 	}
 
 
-	public Timestamp getCreatedAt() {
+	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
 
 
-	public void setCreatedAt(Timestamp createdAt) {
+	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
 
@@ -147,7 +151,7 @@ public class Section implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Section other = (Section) obj;
+		Session other = (Session) obj;
 		return Objects.equals(createdAt, other.createdAt) && Objects.equals(id, other.id)
 				&& Objects.equals(voteCountYes, other.voteCountYes);
 	}

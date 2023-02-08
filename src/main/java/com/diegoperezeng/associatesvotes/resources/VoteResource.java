@@ -12,37 +12,54 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.diegoperezeng.associatesvotes.entities.Topic;
 import com.diegoperezeng.associatesvotes.entities.Vote;
+import com.diegoperezeng.associatesvotes.resources.config.VotePost;
+import com.diegoperezeng.associatesvotes.resources.exceptions.ErrorResponse;
 import com.diegoperezeng.associatesvotes.services.VoteService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 @RestController
-@RequestMapping("/votes")
+@RequestMapping("/api/v1/votes")
+@Api(value = "Vote Management System", description = "Operations related to votes", tags = {
+		"4 - Vote Management System" })
 public class VoteResource {
 
 	@Autowired
 	private VoteService voteService;
 
-	// Returns all votes
+	@ApiOperation(value = "Get all votes")
 	@GetMapping
 	public List<Vote> getAllVotes() {
 		return voteService.getAllVotes();
 	}
 
-	// Returns a vote by id
+	@ApiOperation(value = "Get vote by id")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Successful"),
+			@ApiResponse(code = 404, message = "Vote not found"), })
 	@GetMapping("/{id}")
-	public Vote findVoteById(@PathVariable Long id) {
+	public Vote findVoteById(@ApiParam(value = "Id of the vote", required = true) @PathVariable Long id) {
 		return voteService.findVoteById(id);
 	}
 
-	// Creates a new vote for an associate in a particular section
-	@PostMapping
-	public ResponseEntity<Topic> saveVote(@RequestBody Vote vote) {
+	@ApiOperation(value = "Create a new vote for an associate in a particular session / Item3: Receber votos dos associados em pautas", tags = {
+			"Organized - Associate Vote Challenge Endpoints", "4 - Vote Management System" })
+	@ApiResponses(value = {
+			@ApiResponse(code = 201, message = "Vote Registered Successfully"),
+			@ApiResponse(code = 406, message = "Not Acceptable")
+	})
+	@PostMapping("/save")
+	public ResponseEntity<?> saveVote(@ApiParam(value = "Vote details", required = true) @RequestBody VotePost vote) {
 		try {
-			voteService.saveVote(vote.getSectionId(), vote.getAssociateId(), vote.getVoteChoice());
-			return new ResponseEntity<>(HttpStatus.CREATED);
+			voteService.saveVote(vote.getSessionId(), vote.getAssociateId(), vote.getVoteChoice());
+			return new ResponseEntity<>("Vote Registered Successfully", HttpStatus.CREATED);
 		} catch (Exception e) {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			return ErrorResponse.getResponse(e);
 		}
 	}
 }

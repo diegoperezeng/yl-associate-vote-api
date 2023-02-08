@@ -1,5 +1,6 @@
 package com.diegoperezeng.associatesvotes.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.hibernate.exception.ConstraintViolationException;
@@ -32,10 +33,12 @@ public class AssociateService {
 	}
 
 	@Transactional
-	public void saveAssociate(String name, String email) throws ConstraintViolationException {
+	public void saveAssociate(String name, String cpf, String email) throws ConstraintViolationException {
 		Associate associate = new Associate();
 		associate.setName(name);
+		associate.setCpf(cpf);
 		associate.setEmail(email);
+		associate.setCreatedAt(LocalDateTime.now());
 
 		serviceUtils.handleRepositoryCall(() -> associateRepository.save(associate));
 
