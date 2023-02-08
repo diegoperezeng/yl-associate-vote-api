@@ -20,6 +20,7 @@ import com.diegoperezeng.associatesvotes.resources.exceptions.ErrorResponse;
 import com.diegoperezeng.associatesvotes.services.SessionService;
 import com.diegoperezeng.associatesvotes.services.config.TopicResult;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
@@ -27,6 +28,8 @@ import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping("/api/v1/sessions")
+@Api(value = "Session Management System", description = "Operations related to sessions", tags = {
+		"3 - Session Management System" })
 public class SessionResource {
 
 	@Autowired
@@ -49,7 +52,7 @@ public class SessionResource {
 	@ApiOperation(value = "Get a session by id")
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Successfully retrieved session"),
-			@ApiResponse(code = 404, message = "Session not found")	})
+			@ApiResponse(code = 404, message = "Session not found") })
 	@GetMapping("/{id}")
 	public Session findTopicById(@PathVariable Long id) {
 		try {
@@ -59,7 +62,8 @@ public class SessionResource {
 		}
 	}
 
-	@ApiOperation(value = "Count votes and give the voting result on the topic / Item4: Contar os votos e dar o resultado da votação na pauta")
+	@ApiOperation(value = "Count votes and give the voting result on the topic / Item4: Contar os votos e dar o resultado da votação na pauta", tags = {
+			"Organized - Associate Vote Challenge Endpoints", "3 - Session Management System" })
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Successfully Retrieved Result"),
 			@ApiResponse(code = 404, message = "Result not found")
@@ -72,20 +76,23 @@ public class SessionResource {
 			return null;
 		}
 	}
-	
 
-	@ApiOperation(value = "Open a voting session on a topic / Item2: Abrir uma sessão de votação em uma pauta")
+	@ApiOperation(value = "Open a voting session on a topic / Item2: Abrir uma sessão de votação em uma pauta", tags = {
+			"Organized - Associate Vote Challenge Endpoints", "3 - Session Management System" })
 	@ApiResponses(value = {
 			@ApiResponse(code = 201, message = "Successfully created a new session"),
 			@ApiResponse(code = 406, message = "Not Acceptable")
 	})
 	@PostMapping("/start")
-	public ResponseEntity<?> saveSession(@RequestBody @ApiParam(value = "Session data", required = true) SessionPost sessionPost) throws ConstraintViolationException {
-	    try {
-	        sessionService.saveSession(sessionPost.getTopicId(), sessionPost.getStartTime(), sessionPost.getEndTime(), sessionPost.getIsOpen());
-	        return new ResponseEntity<>("Successfully created a new session",HttpStatus.CREATED);
-	    } catch (Exception e) {
-			return ErrorResponse.getResponse(e);					
-		}	    
+	public ResponseEntity<?> saveSession(
+			@RequestBody @ApiParam(value = "Session data", required = true) SessionPost sessionPost)
+			throws ConstraintViolationException {
+		try {
+			sessionService.saveSession(sessionPost.getTopicId(), sessionPost.getStartTime(), sessionPost.getEndTime(),
+					sessionPost.getIsOpen());
+			return new ResponseEntity<>("Successfully created a new session", HttpStatus.CREATED);
+		} catch (Exception e) {
+			return ErrorResponse.getResponse(e);
+		}
 	}
 }

@@ -23,7 +23,8 @@ import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping("/api/v1/topics")
-@Api(value = "Topic Management System", description = "Operations pertaining to topics in the Topic Management System")
+@Api(value = "Topic Management System", description = "Operations related to topics", tags = {
+		"2 - Topic Management System" })
 public class TopicResource {
 
 	@Autowired
@@ -46,7 +47,8 @@ public class TopicResource {
 
 	// Item: Cadastrar uma nova pauta
 	@PostMapping("/save")
-	@ApiOperation(value = "Add a new topic / Item1: Cadastrar uma nova pauta")
+	@ApiOperation(value = "Add a new topic / Item1: Cadastrar uma nova pauta", tags = { "Organized - Associate Vote Challenge Endpoints",
+			"2 - Topic Management System" })
 	@ApiResponses(value = {
 			@ApiResponse(code = 201, message = "Successfully created topic"),
 			@ApiResponse(code = 406, message = "Not Acceptable")
