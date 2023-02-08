@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.diegoperezeng.associatesvotes.entities.Topic;
+import com.diegoperezeng.associatesvotes.resources.config.TopicPost;
 import com.diegoperezeng.associatesvotes.resources.exceptions.ErrorResponse;
 import com.diegoperezeng.associatesvotes.services.TopicService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
@@ -51,10 +51,10 @@ public class TopicResource {
 			@ApiResponse(code = 201, message = "Successfully created topic"),
 			@ApiResponse(code = 406, message = "Not Acceptable")
 	})
-	public ResponseEntity<?> saveTopic(@RequestBody Topic topic) {
+	public ResponseEntity<?> saveTopic(@RequestBody TopicPost topic) {
 		try {
 			topicService.saveTopic(topic.getTitle(), topic.getDescription(), topic.getOpenStatus());
-			return new ResponseEntity<>(HttpStatus.CREATED);
+			return new ResponseEntity<>("Successfully created topic", HttpStatus.CREATED);
 		} catch (Exception e) {
 			return ErrorResponse.getResponse(e);
 		}

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.diegoperezeng.associatesvotes.entities.Vote;
+import com.diegoperezeng.associatesvotes.resources.config.VotePost;
 import com.diegoperezeng.associatesvotes.resources.exceptions.ErrorResponse;
 import com.diegoperezeng.associatesvotes.services.VoteService;
 
@@ -49,7 +50,7 @@ public class VoteResource {
 			@ApiResponse(code = 406, message = "Not Acceptable")
 	})
 	@PostMapping("/save")
-	public ResponseEntity<?> saveVote(@ApiParam(value = "Vote details", required = true) @RequestBody Vote vote) {
+	public ResponseEntity<?> saveVote(@ApiParam(value = "Vote details", required = true) @RequestBody VotePost vote) {
 		try {
 			voteService.saveVote(vote.getSessionId(), vote.getAssociateId(), vote.getVoteChoice());
 			return new ResponseEntity<>("Vote Registered Successfully", HttpStatus.CREATED);

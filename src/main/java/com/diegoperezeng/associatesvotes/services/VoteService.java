@@ -1,6 +1,6 @@
 package com.diegoperezeng.associatesvotes.services;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.hibernate.exception.ConstraintViolationException;
@@ -41,7 +41,7 @@ public class VoteService {
 		vote.setSessionId(sessionId);
 		vote.setAssociateId(associateId);
 		vote.setVoteChoice(voteChoice);
-		vote.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+		vote.setCreatedAt(LocalDateTime.now());
 
 		serviceUtils.handleRepositoryCall(() -> voteRepository.save(vote));
 

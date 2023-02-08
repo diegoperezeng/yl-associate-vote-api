@@ -1,4 +1,4 @@
-package com.diegoperezeng.associatesvotes.services;
+package com.diegoperezeng.associatesvotes.services.config;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
