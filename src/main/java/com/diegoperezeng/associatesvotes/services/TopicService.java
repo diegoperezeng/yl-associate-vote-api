@@ -1,6 +1,7 @@
 package com.diegoperezeng.associatesvotes.services;
 
-import java.sql.Timestamp;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.hibernate.exception.ConstraintViolationException;
@@ -40,7 +41,7 @@ public class TopicService {
 		topic.setTitle(title);
 		topic.setDescription(description);
 		topic.setOpenStatus(openStatus);
-		topic.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+		topic.setCreatedAt(LocalDateTime.now());
 
 		serviceUtils.handleRepositoryCall(() -> topicRepository.save(topic));
 

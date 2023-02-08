@@ -16,6 +16,5 @@ VALUES
 ('The Force and Destiny', 'The intertwined fates of the Jedi and the Sith', 1);
 
 INSERT INTO session (topic_id, start_time, end_time,is_open) VALUES (1, NOW(), 	DATE_ADD(NOW(), INTERVAL 20 DAY), 1);
-INSERT INTO session (topic_id, start_time, end_time,is_open) VALUES (2, NOW(), 	DATE_ADD(NOW(), INTERVAL 20 DAY), 1);
-INSERT INTO session (topic_id, start_time, end_time,is_open) VALUES (3, NOW(), 	DATE_ADD(NOW(), INTERVAL 20 DAY), 0);
-INSERT INTO session (topic_id, start_time, is_open) VALUES (4, NOW(), 0);
+INSERT INTO session (topic_id, start_time, end_time,is_open) VALUES (2, NOW(), 	DATE_ADD(NOW(), INTERVAL 20 DAY), 0);
+INSERT INTO session (topic_id, start_time, is_open) VALUES (3, NOW(), 0);

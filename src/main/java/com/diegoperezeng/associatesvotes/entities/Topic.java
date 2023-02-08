@@ -1,10 +1,14 @@
 package com.diegoperezeng.associatesvotes.entities;
 
-import javax.persistence.*;
-
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Objects;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -20,19 +24,19 @@ public class Topic implements Serializable {
 	private String title;
 	private String description;
 	private Boolean openStatus;
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
-	private Timestamp createdAt;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime createdAt;
 	    
 	public Topic() {
 	}
 
-	public Topic(Long id, String title, String description, Boolean openStatus, Timestamp createdAt) {
+	public Topic(Long id, String title, String description, Boolean openStatus, LocalDateTime createdAt) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.openStatus = openStatus;
-		this.createdAt = createdAt;
+		this.createdAt = LocalDateTime.now();
 	}
 
 	public Long getId() {
@@ -67,11 +71,11 @@ public class Topic implements Serializable {
 		this.openStatus = openStatus;
 	}
 
-	public Timestamp getCreatedAt() {
+	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(Timestamp createdAt) {
+	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
 

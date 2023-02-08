@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping("/api/v1/associates")
-@Api(value = "Associate Resource", description = "Operations related to Associates")
+@Api(value = "Associate Management System", description = "Operations related to Associates", tags = {"1 - Associate Management System"})
 public class AssociateResource {
 
 	@Autowired

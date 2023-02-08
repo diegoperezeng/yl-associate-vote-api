@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.diegoperezeng.associatesvotes.entities.Topic;
+import com.diegoperezeng.associatesvotes.resources.config.TopicPost;
 import com.diegoperezeng.associatesvotes.resources.exceptions.ErrorResponse;
 import com.diegoperezeng.associatesvotes.services.TopicService;
 
@@ -22,7 +23,8 @@ import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping("/api/v1/topics")
-@Api(value = "Topic Management System", description = "Operations pertaining to topics in the Topic Management System")
+@Api(value = "Topic Management System", description = "Operations related to topics", tags = {
+		"2 - Topic Management System" })
 public class TopicResource {
 
 	@Autowired
@@ -45,15 +47,16 @@ public class TopicResource {
 
 	// Item: Cadastrar uma nova pauta
 	@PostMapping("/save")
-	@ApiOperation(value = "Add a new topic / Item1: Cadastrar uma nova pauta")
+	@ApiOperation(value = "Add a new topic / Item1: Cadastrar uma nova pauta", tags = { "Organized - Associate Vote Challenge Endpoints",
+			"2 - Topic Management System" })
 	@ApiResponses(value = {
 			@ApiResponse(code = 201, message = "Successfully created topic"),
 			@ApiResponse(code = 406, message = "Not Acceptable")
 	})
-	public ResponseEntity<?> saveTopic(@RequestBody Topic topic) {
+	public ResponseEntity<?> saveTopic(@RequestBody TopicPost topic) {
 		try {
 			topicService.saveTopic(topic.getTitle(), topic.getDescription(), topic.getOpenStatus());
-			return new ResponseEntity<>(HttpStatus.CREATED);
+			return new ResponseEntity<>("Successfully created topic", HttpStatus.CREATED);
 		} catch (Exception e) {
 			return ErrorResponse.getResponse(e);
 		}
