@@ -35,7 +35,7 @@ Done. The Application should be running in your terminal.
 
 http://localhost:8080/swagger-ui/index.html (if you run your application locally)
 
-Click [here](documentation/AsVotAPI%20v1%20-%20EndPoints%20Documentation.pdf) to open the the list of endpoints documentation.
+Click [here](documentation/AsVotAPI_v.1.1.0-EndPoints_Documentation.pdf) to open the the list of endpoints documentation.
 
 ## The Data Base:
 
