@@ -33,9 +33,9 @@ public class SpringFoxConfig {
     
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("AsVot API - v1")
+                .title("AsVot API - v." + buildProperties.getVersion())
                 .description("Associates Votes count on topics service")
-                .version(buildProperties.getVersion())
+                //.version(buildProperties.getVersion())
                 .build();
     }
 
