@@ -16,8 +16,20 @@ An aplication to control of the Associates vote calculation on business agenda. 
 ## INSTALLATION
 
 Run ``` mvn clean install ```
+
 then
+
 Run ``` mvn clean package ```
+
+
+## RUN
+
+After the installation process, the .jar project file will be in the folder "target" with the name "associatesvotes-X.X.X.jar".
+
+Run ```java -jar  {put here the entire path to your jar file}\associatesvotes-X.X.X.jar```
+
+Done. The Application should be running in your terminal.
+
 
 ## SWAGGER
 
