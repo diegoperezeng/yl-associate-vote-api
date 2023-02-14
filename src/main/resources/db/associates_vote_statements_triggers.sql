@@ -1,5 +1,4 @@
 ##"YES" COUNT OF A PARTICULAR TOPIC ON THE REGISTRATION OF A VOTE
-#DROP TRIGGER vote_update_yes_count_on_insert;
 DELIMITER $$
 CREATE TRIGGER vote_update_yes_count_on_insert
 AFTER INSERT ON vote
@@ -14,7 +13,6 @@ BEGIN
 END $$
 DELIMITER ;
 
-#DROP TRIGGER vote_update_yes_count_on_update;
 DELIMITER $$
 CREATE TRIGGER vote_update_yes_count_on_update AFTER UPDATE ON vote
 FOR EACH ROW 
@@ -29,7 +27,6 @@ END $$
 DELIMITER ;
 
 ##"NO" COUNT OF A PARTICULAR TOPIC ON THE REGISTRATION OF A VOTE
-#DROP TRIGGER vote_update_no_count_on_insert;
 DELIMITER $$
 CREATE TRIGGER vote_update_no_count_on_insert AFTER INSERT ON vote
 FOR EACH ROW 
@@ -43,7 +40,6 @@ BEGIN
 END $$
 DELIMITER ;
 
-#DROP TRIGGER vote_update_no_count_on_update;
 DELIMITER $$
 CREATE TRIGGER vote_update_no_count_on_update AFTER UPDATE ON vote
 FOR EACH ROW 
@@ -58,7 +54,6 @@ END $$
 DELIMITER ;
 
 ##CHECK IF THERE IS NO END TIME GIVEN AND THEN PUT 60 SECONDS IN END TIME
-#DROP TRIGGER session_end_time_update_on_insert;
 DELIMITER $$
 CREATE TRIGGER session_end_time_update_on_insert
 BEFORE INSERT ON session
@@ -68,7 +63,6 @@ SET NEW.end_time = COALESCE(NEW.end_time, DATE_ADD(NEW.start_time, INTERVAL 60 S
 END$$
 DELIMITER ;
 
-#DROP TRIGGER session_end_time_update_on_update;
 DELIMITER $$
 CREATE TRIGGER session_end_time_update_on_update 
 BEFORE UPDATE ON session
@@ -81,7 +75,6 @@ END $$
 DELIMITER ;
 
 ##CHECK IF THE DIFERENCE BETWEEN END AND START TIME IS 60 SECONDS
-#DROP TRIGGER check_end_time_duration_on_insert;
 DELIMITER $$
 CREATE TRIGGER check_end_time_duration_on_insert
 BEFORE INSERT ON session
@@ -97,7 +90,6 @@ END;
 $$
 DELIMITER ;
 
-#DROP TRIGGER check_end_time_duration_on_update;
 DELIMITER $$
 CREATE TRIGGER check_end_time_duration_on_update
 BEFORE UPDATE ON session
@@ -114,7 +106,6 @@ $$
 DELIMITER ;
 
 ##CHECKING IF THE VOTE IS OCURRING BETWEEN THE START AND END TIMES OF THE SECTION
-#DROP TRIGGER check_if_session_is_open_on_insert;
 DELIMITER $$
 CREATE TRIGGER check_if_session_is_open_on_insert 
 BEFORE INSERT ON vote
@@ -137,7 +128,6 @@ END $$
 DELIMITER ;
 
 ##CHECKING IF THE ASSOCIATE ONLY VOTES ONE TIME IN A SECTION
-#DROP TRIGGER vote_check_unique_associate_vote;
 DELIMITER $$
 CREATE TRIGGER vote_check_unique_associate_vote
 BEFORE INSERT ON vote
