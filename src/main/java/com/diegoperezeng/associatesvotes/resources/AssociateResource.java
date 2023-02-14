@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.diegoperezeng.associatesvotes.entities.Associate;
+import com.diegoperezeng.associatesvotes.resources.config.AssociatePost;
 import com.diegoperezeng.associatesvotes.resources.exceptions.ErrorResponse;
 import com.diegoperezeng.associatesvotes.services.AssociateService;
 
@@ -57,7 +58,7 @@ public class AssociateResource {
 			@ApiResponse(code = 201, message = "Successfully created associate"),
 			@ApiResponse(code = 406, message = "Not Acceptable")
 	})
-	public ResponseEntity<?> saveAssociate(@RequestBody @ApiParam(value = "Associate data", required = true) Associate associate) throws ConstraintViolationException {
+	public ResponseEntity<?> saveAssociate(@RequestBody @ApiParam(value = "Associate data", required = true) AssociatePost associate) throws ConstraintViolationException {
 		try {
 			associateService.saveAssociate(associate.getName(), associate.getCpf(), associate.getEmail());
 			return new ResponseEntity<>("Associate Created Succesfully",HttpStatus.CREATED);

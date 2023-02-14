@@ -17,12 +17,13 @@ public class SessionPost {
 	public SessionPost() {
 	}
 
-	public SessionPost(Long topicId, LocalDateTime startTime, LocalDateTime endTime, Boolean isOpen) {
-		super();
-		this.startTime = startTime;
-		this.endTime = endTime;
-		this.isOpen = isOpen;
-	}
+	// public SessionPost(Long topicId, LocalDateTime startTime, LocalDateTime endTime, Boolean isOpen) {
+	// 	super();
+	// 	this.topicId = topicId;
+	// 	this.startTime = startTime;
+	// 	this.endTime = endTime;
+	// 	this.isOpen = isOpen;
+	// }
 
 	public Long getTopicId() {
 		return topicId;
