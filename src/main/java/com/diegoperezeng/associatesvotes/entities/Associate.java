@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.diegoperezeng.associatesvotes.validation.ValidCpf;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 
@@ -23,7 +24,10 @@ public class Associate implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@ValidCpf
 	private String cpf;
+	
 	private String name;
 	private String email;
 	
