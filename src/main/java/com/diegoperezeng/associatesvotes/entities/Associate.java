@@ -43,7 +43,7 @@ public class Associate implements Serializable {
 		this.cpf = cpf;
 		this.name = name;
 		this.email = email;
-		this.createdAt = LocalDateTime.now();
+		this.createdAt = createdAt;
 	}
 
 	public Long getId() {
