@@ -1,20 +1,20 @@
 package com.diegoperezeng.associatesvotes.entities;
 
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.diegoperezeng.associatesvotes.validation.ValidCpf;
 import com.fasterxml.jackson.annotation.JsonFormat;
-
-
 
 @Entity
 @Table(name = "associate")
@@ -25,10 +25,15 @@ public class Associate implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ValidCpf
+	@Column(unique = true)
+    @NotNull
+    @ValidCpf
 	private String cpf;
 	
+	@NotEmpty
 	private String name;
+	
+	@NotEmpty
 	private String email;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")

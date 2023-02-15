@@ -3,7 +3,10 @@ package com.diegoperezeng.associatesvotes.services;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.hibernate.exception.ConstraintViolationException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +21,7 @@ public class AssociateService {
 	// more clean
 	ServiceUtils serviceUtils = new ServiceUtils();
 
+	@Autowired
 	private final AssociateRepository associateRepository;
 
 	public AssociateService(AssociateRepository associateRepository) {
@@ -33,9 +37,11 @@ public class AssociateService {
 	}
 
 	@Transactional
-	public void saveAssociate(String name, String cpf, String email) throws ConstraintViolationException {
+	public void saveAssociate(String name, String cpf, String email) throws ConstraintViolationException {	
+		@Valid
 		Associate associate = new Associate();
-		associate.setName(name);
+		
+		associate.setName(name);		
 		associate.setCpf(cpf);
 		associate.setEmail(email);
 		associate.setCreatedAt(LocalDateTime.now());
@@ -43,4 +49,6 @@ public class AssociateService {
 		serviceUtils.handleRepositoryCall(() -> associateRepository.save(associate));
 
 	}
+
+	
 }

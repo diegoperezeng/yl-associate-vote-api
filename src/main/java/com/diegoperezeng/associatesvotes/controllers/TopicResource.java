@@ -1,4 +1,4 @@
-package com.diegoperezeng.associatesvotes.resources;
+package com.diegoperezeng.associatesvotes.controllers;
 
 import java.util.List;
 
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.diegoperezeng.associatesvotes.controllers.config.TopicPost;
+import com.diegoperezeng.associatesvotes.controllers.exceptions.ErrorResponse;
 import com.diegoperezeng.associatesvotes.entities.Topic;
-import com.diegoperezeng.associatesvotes.resources.config.TopicPost;
-import com.diegoperezeng.associatesvotes.resources.exceptions.ErrorResponse;
 import com.diegoperezeng.associatesvotes.services.TopicService;
 
 import io.swagger.annotations.Api;

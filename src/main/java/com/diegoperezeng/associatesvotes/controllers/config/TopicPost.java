@@ -1,4 +1,4 @@
-package com.diegoperezeng.associatesvotes.resources.config;
+package com.diegoperezeng.associatesvotes.controllers.config;
 
 public class TopicPost {
 

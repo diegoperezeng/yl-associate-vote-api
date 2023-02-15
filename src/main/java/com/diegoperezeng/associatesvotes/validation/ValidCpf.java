@@ -13,13 +13,10 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Target({FIELD, PARAMETER, TYPE_USE})
 @Retention(RUNTIME)
-@Constraint(validatedBy = CpfValidator.class)
+@Constraint(validatedBy = {CpfValidator.class})
 @Documented
 public @interface ValidCpf {
-    String message() default "Invalid CPF number";
-
+    String message() default "invalid.document";
     Class<?>[] groups() default {};
-
     Class<? extends Payload>[] payload() default {};
 }
-

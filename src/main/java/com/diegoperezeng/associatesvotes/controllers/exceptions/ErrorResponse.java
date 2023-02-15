@@ -1,4 +1,4 @@
-package com.diegoperezeng.associatesvotes.resources.exceptions;
+package com.diegoperezeng.associatesvotes.controllers.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
